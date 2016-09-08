@@ -3,10 +3,13 @@ package com.mcnichol.katas.fizzbuzz;
 public class FizzBuzzApp {
 
     public String execute(Integer userInput) {
+        String result;
         if(userInput == 1) {
-            return "1";
+            result = "1";
         }else{
-            return "2";
+            result = "2";
         }
+
+        return result;
     }
 }
