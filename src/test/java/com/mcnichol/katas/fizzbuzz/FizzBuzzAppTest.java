@@ -70,4 +70,11 @@ public class FizzBuzzAppTest {
 
         assertThat(actual, equalTo("FizzBuzz"));
     }
+
+    @Test
+    public void execute_passedIntegerThirty_returnsFizzBuzz() throws Exception {
+        String actual = subject.execute(30);
+
+        assertThat(actual, equalTo("FizzBuzz"));
+    }
 }
