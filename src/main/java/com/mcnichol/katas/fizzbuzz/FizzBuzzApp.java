@@ -7,7 +7,7 @@ public class FizzBuzzApp {
 
         if (userInput % 3 == 0) {
             result = "Fizz";
-        } else if (userInput == 5) {
+        } else if (userInput % 5 == 0) {
             result = "Buzz";
         } else {
             result = String.valueOf(userInput);
