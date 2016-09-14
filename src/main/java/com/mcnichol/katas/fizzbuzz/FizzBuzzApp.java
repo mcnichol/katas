@@ -6,10 +6,8 @@ public class FizzBuzzApp {
         String result;
         if (userInput == 3) {
             result = "Fizz";
-        } else if (userInput == 1) {
-            result = "1";
         } else {
-            result = "2";
+            result = String.valueOf(userInput);
         }
 
         return result;
