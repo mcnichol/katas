@@ -6,6 +6,8 @@ public class FizzBuzzApp {
         String result;
         if (userInput == 3) {
             result = "Fizz";
+        } else if(userInput == 5){
+            result = "Buzz";
         } else {
             result = String.valueOf(userInput);
         }
