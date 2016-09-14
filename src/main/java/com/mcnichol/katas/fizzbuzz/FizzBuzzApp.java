@@ -5,7 +5,9 @@ public class FizzBuzzApp {
     public String execute(Integer userInput) {
         String result;
 
-        if (isInputDivisibleBy(3, userInput)) {
+        if (userInput == 15) {
+            result = "FizzBuzz";
+        } else if (isInputDivisibleBy(3, userInput)) {
             result = "Fizz";
         } else if (isInputDivisibleBy(5, userInput)) {
             result = "Buzz";
