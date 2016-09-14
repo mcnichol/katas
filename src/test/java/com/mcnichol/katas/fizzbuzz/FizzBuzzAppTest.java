@@ -63,4 +63,11 @@ public class FizzBuzzAppTest {
 
         assertThat(actual, equalTo("Buzz"));
     }
+
+    @Test
+    public void execute_passedIntegerFifteen_returnsFizzBuzz() throws Exception {
+        String actual = subject.execute(15);
+
+        assertThat(actual, equalTo("FizzBuzz"));
+    }
 }
