@@ -21,7 +21,7 @@ public class FizzBuzzApp {
     }
 
     private void validate(Integer userInput) {
-        if(userInput == 0){
+        if(userInput <= 0){
             throw new IllegalArgumentException("Input value must be greater than 0");
         }
     }
