@@ -82,4 +82,9 @@ public class FizzBuzzAppTest {
     public void execute_passedIntegerZero_throwsException() throws Exception {
         subject.execute(0);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void execute_passedIntegerNegativeOne_throwsException() throws Exception {
+        subject.execute(-1);
+    }
 }
