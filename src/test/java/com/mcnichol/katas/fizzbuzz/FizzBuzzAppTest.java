@@ -77,4 +77,9 @@ public class FizzBuzzAppTest {
 
         assertThat(actual, equalTo("FizzBuzz"));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void execute_passedIntegerZero_throwsException() throws Exception {
+        subject.execute(0);
+    }
 }
