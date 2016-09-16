@@ -3,9 +3,7 @@ package com.mcnichol.katas.fizzbuzz;
 public class FizzBuzzApp {
 
     public String execute(Integer userInput) {
-        if(userInput == 0){
-            throw new IllegalArgumentException("Input value must be greater than 0");
-        }
+        validate(userInput);
 
         String result;
 
@@ -20,6 +18,12 @@ public class FizzBuzzApp {
         }
 
         return result;
+    }
+
+    private void validate(Integer userInput) {
+        if(userInput == 0){
+            throw new IllegalArgumentException("Input value must be greater than 0");
+        }
     }
 
     private boolean isInputDivisibleBy(Integer divisor, Integer userInput) {
