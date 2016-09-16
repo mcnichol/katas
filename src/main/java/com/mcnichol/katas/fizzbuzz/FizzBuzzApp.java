@@ -3,6 +3,10 @@ package com.mcnichol.katas.fizzbuzz;
 public class FizzBuzzApp {
 
     public String execute(Integer userInput) {
+        if(userInput == 0){
+            throw new IllegalArgumentException("Input value must be greater than 0");
+        }
+
         String result;
 
         if (isInputDivisibleBy(15, userInput)) {
