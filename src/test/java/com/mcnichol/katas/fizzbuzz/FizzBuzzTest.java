@@ -6,13 +6,13 @@ import org.junit.Test;
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
-public class FizzBuzzAppTest {
+public class FizzBuzzTest {
 
-    private FizzBuzzApp subject;
+    private FizzBuzz subject;
 
     @Before
     public void setUp() throws Exception {
-        subject = new FizzBuzzApp();
+        subject = new FizzBuzzImpl();
     }
 
     @Test

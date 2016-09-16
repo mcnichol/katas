@@ -1,6 +1,6 @@
 package com.mcnichol.katas.fizzbuzz;
 
-public class FizzBuzzApp {
+public class FizzBuzzImpl implements FizzBuzz {
 
     public String execute(Integer userInput) {
         validate(userInput);
@@ -21,7 +21,7 @@ public class FizzBuzzApp {
     }
 
     private void validate(Integer userInput) {
-        if(userInput <= 0){
+        if (userInput <= 0) {
             throw new IllegalArgumentException("Input value must be greater than 0");
         }
     }
@@ -29,4 +29,5 @@ public class FizzBuzzApp {
     private boolean isInputDivisibleBy(Integer divisor, Integer userInput) {
         return userInput % divisor == 0;
     }
+
 }
