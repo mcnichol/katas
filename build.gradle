@@ -1,7 +1,18 @@
 group 'com.mcnichol.kata'
 version '1.0-SNAPSHOT'
 
-apply plugin: 'java'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+    }
+}
+
+apply plugin: "java"
+apply plugin: "spring-boot"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -11,5 +22,6 @@ repositories {
 }
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.11'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest'
+    testCompile 'org.springframework.boot:spring-boot-starter-test'
 }

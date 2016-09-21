@@ -1,5 +1,8 @@
 package com.mcnichol.katas.fizzbuzz;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class FizzBuzzImpl implements FizzBuzz {
 
     public String execute(Integer userInput) {
