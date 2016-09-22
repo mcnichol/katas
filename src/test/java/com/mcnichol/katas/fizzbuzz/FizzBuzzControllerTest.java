@@ -52,4 +52,13 @@ public class FizzBuzzControllerTest {
         fizzBuzzController.perform(get("/fizzbuzz/{input}", 1))
                 .andExpect(jsonPath("$.response").value(is(expected)));
     }
+
+    @Test
+    public void getFizzBuzz_passedIntegerTwo_retunrsStringTwo() throws Exception {
+        String expected = "2";
+        doReturn(expected).when(mockFizzBuzz).execute(2);
+
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", 2))
+                .andExpect(jsonPath("$.response").value(is(expected)));
+    }
 }
