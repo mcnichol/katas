@@ -3,6 +3,7 @@ package com.mcnichol.katas.fizzbuzz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,5 +22,10 @@ public class FizzBuzzController {
     public ResponseEntity<FizzBuzzResponse> getFizzBuzz(@PathVariable("input") Integer input){
 
       return new ResponseEntity<>(new FizzBuzzResponse(fizzBuzz.execute(input)), HttpStatus.OK);
+    }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public ResponseEntity<FizzBuzzResponse> conflict(Exception e){
+        return new ResponseEntity<>(new FizzBuzzResponse("Invalid Input: Only accepts values greater than zero"), HttpStatus.NOT_ACCEPTABLE);
     }
 }
