@@ -20,6 +20,6 @@ public class FizzBuzzController {
     @RequestMapping("/{input}")
     public ResponseEntity<FizzBuzzResponse> getFizzBuzz(@PathVariable("input") Integer input){
 
-      return new ResponseEntity<>(new FizzBuzzResponse(String.valueOf(input)), HttpStatus.OK);
+      return new ResponseEntity<>(new FizzBuzzResponse(fizzBuzz.execute(input)), HttpStatus.OK);
     }
 }
