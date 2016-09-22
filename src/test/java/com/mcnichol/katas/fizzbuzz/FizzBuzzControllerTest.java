@@ -45,7 +45,7 @@ public class FizzBuzzControllerTest {
     }
 
     @Test
-    public void getFizzBuzz_passedIntegerOne_retunrsStringOne() throws Exception {
+    public void getFizzBuzz_passedIntegerOne_returnsStringOne() throws Exception {
         String expected = "1";
         doReturn(expected).when(mockFizzBuzz).execute(1);
 
@@ -54,7 +54,7 @@ public class FizzBuzzControllerTest {
     }
 
     @Test
-    public void getFizzBuzz_passedIntegerTwo_retunrsStringTwo() throws Exception {
+    public void getFizzBuzz_passedIntegerTwo_returnsStringTwo() throws Exception {
         String expected = "2";
         doReturn(expected).when(mockFizzBuzz).execute(2);
 
@@ -63,11 +63,20 @@ public class FizzBuzzControllerTest {
     }
 
     @Test
-    public void getFizzBuzz_passedIntegerThree_retunrsStringThree() throws Exception {
+    public void getFizzBuzz_passedIntegerThree_returnsStringThree() throws Exception {
         String expected = "Fizz";
         doReturn(expected).when(mockFizzBuzz).execute(3);
 
         fizzBuzzController.perform(get("/fizzbuzz/{input}", 3))
                 .andExpect(jsonPath("$.response").value(is(expected)));
+    }
+
+    @Test
+    public void getFizzBuzz_passedIntegerLessThanOne_returnsFailureMessage() throws Exception {
+        doThrow(IllegalArgumentException.class).when(mockFizzBuzz).execute(0);
+
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", 0))
+                .andExpect(status().isNotAcceptable())
+                .andExpect(jsonPath("$.response").value("Invalid Input: Only accepts values greater than zero"));
     }
 }
