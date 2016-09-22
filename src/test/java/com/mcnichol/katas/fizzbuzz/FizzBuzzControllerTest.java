@@ -61,4 +61,13 @@ public class FizzBuzzControllerTest {
         fizzBuzzController.perform(get("/fizzbuzz/{input}", 2))
                 .andExpect(jsonPath("$.response").value(is(expected)));
     }
+
+    @Test
+    public void getFizzBuzz_passedIntegerThree_retunrsStringThree() throws Exception {
+        String expected = "Fizz";
+        doReturn(expected).when(mockFizzBuzz).execute(3);
+
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", 3))
+                .andExpect(jsonPath("$.response").value(is(expected)));
+    }
 }
