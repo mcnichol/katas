@@ -1,5 +1,6 @@
 package com.mcnichol.katas.fizzbuzz;
 
+import org.hamcrest.core.StringContains;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,9 +37,10 @@ public class FizzBuzzControllerTest {
     @Test
     public void getFizzBuzz_passedInteger_returnsApplicationJSON_andResponseString() throws Exception {
         String expected = "1";
-        doReturn(expected).when(mockFizzBuzz).execute(1);
+        int userInput = 1;
+        doReturn(expected).when(mockFizzBuzz).execute(userInput);
 
-        fizzBuzzController.perform(get("/fizzbuzz/{input}", 1))
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", userInput))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(jsonPath("$.response").value(any(String.class)));
@@ -46,37 +48,41 @@ public class FizzBuzzControllerTest {
 
     @Test
     public void getFizzBuzz_passedIntegerOne_returnsStringOne() throws Exception {
+        int userInput = 1;
         String expected = "1";
-        doReturn(expected).when(mockFizzBuzz).execute(1);
+        doReturn(expected).when(mockFizzBuzz).execute(userInput);
 
-        fizzBuzzController.perform(get("/fizzbuzz/{input}", 1))
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", userInput))
                 .andExpect(jsonPath("$.response").value(is(expected)));
     }
 
     @Test
     public void getFizzBuzz_passedIntegerTwo_returnsStringTwo() throws Exception {
+        int userInput = 2;
         String expected = "2";
-        doReturn(expected).when(mockFizzBuzz).execute(2);
+        doReturn(expected).when(mockFizzBuzz).execute(userInput);
 
-        fizzBuzzController.perform(get("/fizzbuzz/{input}", 2))
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", userInput))
                 .andExpect(jsonPath("$.response").value(is(expected)));
     }
 
     @Test
     public void getFizzBuzz_passedIntegerThree_returnsStringThree() throws Exception {
+        int userInput = 3;
         String expected = "Fizz";
-        doReturn(expected).when(mockFizzBuzz).execute(3);
+        doReturn(expected).when(mockFizzBuzz).execute(userInput);
 
-        fizzBuzzController.perform(get("/fizzbuzz/{input}", 3))
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", userInput))
                 .andExpect(jsonPath("$.response").value(is(expected)));
     }
 
     @Test
-    public void getFizzBuzz_passedIntegerLessThanOne_returnsFailureMessage() throws Exception {
-        doThrow(IllegalArgumentException.class).when(mockFizzBuzz).execute(0);
+    public void getFizzBuzz_passedIntegerLessThanOne_handlesIllegalArgument() throws Exception {
+        int userInput = 0;
+        doThrow(IllegalArgumentException.class).when(mockFizzBuzz).execute(userInput);
 
-        fizzBuzzController.perform(get("/fizzbuzz/{input}", 0))
+        fizzBuzzController.perform(get("/fizzbuzz/{input}", userInput))
                 .andExpect(status().isNotAcceptable())
-                .andExpect(jsonPath("$.response").value("Invalid Input: Only accepts values greater than zero"));
+                .andExpect(jsonPath("$.response").value(StringContains.containsString("Invalid Input:")));
     }
 }

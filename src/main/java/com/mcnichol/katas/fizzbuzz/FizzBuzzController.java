@@ -26,6 +26,6 @@ public class FizzBuzzController {
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<FizzBuzzResponse> conflict(Exception e){
-        return new ResponseEntity<>(new FizzBuzzResponse("Invalid Input: Only accepts values greater than zero"), HttpStatus.NOT_ACCEPTABLE);
+        return new ResponseEntity<>(new FizzBuzzResponse("Invalid Input: " + e.getMessage()), HttpStatus.NOT_ACCEPTABLE);
     }
 }
