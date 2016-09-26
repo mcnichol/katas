@@ -1,8 +1,13 @@
 allprojects {
+    apply plugin: 'java'
     group 'com.mcnichol.katas'
     version '1.0-SNAPSHOT'
+}
 
-    apply plugin: 'java'
+subprojects {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
     apply plugin: 'idea'
 
     buildscript {
@@ -13,12 +18,6 @@ allprojects {
             mavenCentral()
         }
     }
-}
-
-subprojects {
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
     dependencies {
         testCompile 'org.springframework.boot:spring-boot-starter-test'
     }
@@ -26,5 +25,5 @@ subprojects {
     repositories {
         mavenCentral()
     }
-
 }
+

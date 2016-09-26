@@ -1,5 +1,10 @@
 apply plugin: "spring-boot"
 
+jar {
+    baseName = "fizz-buzz"
+    version = "1.0.0"
+}
+
 dependencies{
     compile 'org.springframework.boot:spring-boot-starter-data-rest'
 }
