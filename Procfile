@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -jar fizz-buzz/build/libs/*.jar 
+web: java $JAVA_OPTS -Dserver.port=$PORT -jar fizz-buzz/build/libs/*.jar
