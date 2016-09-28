@@ -1,3 +1,5 @@
 rootProject.name = 'katas'
 
 include "fizz-buzz"
+include 'string-calculator'
+
